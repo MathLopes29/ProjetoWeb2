@@ -57,11 +57,14 @@
 <body>
     <div align="center">
         <h1>Calcula a Media</h1><br><br>
-        <label> Primeira Nota </label>
+        <label> Primeira Nota: </label>
         <input type="number" id="nota1"><br>
 
-        <label> Segunda Nota </label>
-        <input type="number" id="nota2"><br><br><br>
+        <label> Segunda Nota: </label>
+        <input type="number" id="nota2"><br>
+
+        <label> Nota do Projeto</label>
+        <input type="number" id="projeto"><br><br><br>
 
         <button onclick="calcularMedia()"> Calcular Média </button>
         <div id="resultado">
@@ -72,6 +75,7 @@
         function CalculadoraMedia() {
             this.nota1 = 0;
             this.nota2 = 0;
+            this.projeto = 0;
             
             this.setNota1 = function(nota) {
                 this.nota1 = parseFloat(nota);
@@ -80,9 +84,13 @@
             this.setNota2 = function(nota) {
                 this.nota2 = parseFloat(nota);
             };
+
+            this.setProjeto = function(nota){
+                this.projeto = parseFloat(nota);
+            };
             
             this.calcularMedia = function() {
-                var media = (this.nota1 + this.nota2) / 2;
+                var media = (((this.nota1 + this.nota2)* 0.6) / 2) + (this.projeto * 0.4);
                 
                 if (media >= 6) {
                     if (media == 10) {
@@ -100,6 +108,7 @@
             var calculadora = new CalculadoraMedia();
             calculadora.setNota1(document.getElementById("nota1").value);
             calculadora.setNota2(document.getElementById("nota2").value);
+            calculadora.setProjeto(document.getElementById("projeto").value);
             calculadora.calcularMedia();
         }
 
@@ -110,6 +119,7 @@
             } else {
             resultado.innerHTML = `<p> 1º Nota: ${dados.nota1} </p>
                                    <p> 2º Nota: ${dados.nota2} </p>
+                                   <p> Nota do Projeto: ${dados.projeto} </p>
                                    <p> Média: ${dados.media} </p>`
             }
         }
