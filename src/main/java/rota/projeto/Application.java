@@ -48,13 +48,13 @@ public class Application{
         return appName3;
     }
 
-    @GetMapping("/viacep")
-    public String viaCep(){
+    @GetMapping("/cep")
+    public String cep(){
         return appName4;
     }
 
-    @GetMapping("/media")
-    public String media(){
+    @GetMapping("/notas")
+    public String notas(){
         return appName5;
     }
 
