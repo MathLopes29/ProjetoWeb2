@@ -116,7 +116,7 @@ public class AppConfig {
     }
 
     @RequestMapping
-    @GetMapping(value = "/integrante", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/integrantes", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     @Bean(name="appName3")
     public String appName3(){
@@ -358,11 +358,14 @@ public class AppConfig {
                 "<body>\n" +
                 "    <div align=\"center\">\n" +
                 "        <h1>Calcula a Media</h1><br><br>\n" +
-                "        <label> Primeira Nota </label>\n" +
+                "        <label> Primeira Nota: </label>\n" +
                 "        <input type=\"number\" id=\"nota1\"><br>\n" +
                 "\n" +
-                "        <label> Segunda Nota </label>\n" +
-                "        <input type=\"number\" id=\"nota2\"><br><br><br>\n" +
+                "        <label> Segunda Nota: </label>\n" +
+                "        <input type=\"number\" id=\"nota2\"><br>\n" +
+                "\n" +
+                "        <label> Nota do Projeto</label>\n" +
+                "        <input type=\"number\" id=\"projeto\"><br><br><br>\n" +
                 "\n" +
                 "        <button onclick=\"calcularMedia()\"> Calcular Média </button>\n" +
                 "        <div id=\"resultado\">\n" +
@@ -373,6 +376,7 @@ public class AppConfig {
                 "        function CalculadoraMedia() {\n" +
                 "            this.nota1 = 0;\n" +
                 "            this.nota2 = 0;\n" +
+                "            this.projeto = 0;\n" +
                 "            \n" +
                 "            this.setNota1 = function(nota) {\n" +
                 "                this.nota1 = parseFloat(nota);\n" +
@@ -381,9 +385,13 @@ public class AppConfig {
                 "            this.setNota2 = function(nota) {\n" +
                 "                this.nota2 = parseFloat(nota);\n" +
                 "            };\n" +
+                "\n" +
+                "            this.setProjeto = function(nota){\n" +
+                "                this.projeto = parseFloat(nota);\n" +
+                "            };\n" +
                 "            \n" +
                 "            this.calcularMedia = function() {\n" +
-                "                var media = (this.nota1 + this.nota2) / 2;\n" +
+                "                var media = (((this.nota1 + this.nota2)* 0.6) / 2) + (this.projeto * 0.4);\n" +
                 "                \n" +
                 "                if (media >= 6) {\n" +
                 "                    if (media == 10) {\n" +
@@ -401,6 +409,7 @@ public class AppConfig {
                 "            var calculadora = new CalculadoraMedia();\n" +
                 "            calculadora.setNota1(document.getElementById(\"nota1\").value);\n" +
                 "            calculadora.setNota2(document.getElementById(\"nota2\").value);\n" +
+                "            calculadora.setProjeto(document.getElementById(\"projeto\").value);\n" +
                 "            calculadora.calcularMedia();\n" +
                 "        }\n" +
                 "\n" +
@@ -411,6 +420,7 @@ public class AppConfig {
                 "            } else {\n" +
                 "            resultado.innerHTML = `<p> 1º Nota: ${dados.nota1} </p>\n" +
                 "                                   <p> 2º Nota: ${dados.nota2} </p>\n" +
+                "                                   <p> Nota do Projeto: ${dados.projeto} </p>\n" +
                 "                                   <p> Média: ${dados.media} </p>`\n" +
                 "            }\n" +
                 "        }\n" +
@@ -418,7 +428,5 @@ public class AppConfig {
                 "</body>\n" +
                 "</html>";
     }
-
-
 }
 
