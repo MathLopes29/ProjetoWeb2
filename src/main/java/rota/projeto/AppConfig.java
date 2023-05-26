@@ -193,7 +193,7 @@ public class AppConfig {
 
 
     @RequestMapping
-    @GetMapping(value = "/viacep", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/cep", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     @Bean(name="appName4")
     public String appName4(){
@@ -295,7 +295,7 @@ public class AppConfig {
     }
 
     @RequestMapping
-    @GetMapping(value = "/media", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/notas", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     @Bean(name="appName5")
     public String appName5(){
