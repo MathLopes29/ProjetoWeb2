@@ -43,7 +43,7 @@ public class Application{
         return appName2;
     }
 
-    @GetMapping("/integrante")
+    @GetMapping("/integrantes")
     public String integrante(){
         return appName3;
     }
