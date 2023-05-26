@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport", content="width=device-width, initial-scale=1.0">
+    <title>Consulta API ViaCEP</title>
+
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f8f8f8;
+        }
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          text-align: center;
+          padding-top: 100px;
+        }
+        h1 {
+          font-size: 48px;
+          font-weight: bold;
+          color: #d9534f;
+          margin-bottom: 20px;
+        }
+        h2 {
+          font-size: 36px;
+          color: #333;
+          margin-bottom: 50px;
+        }
+        label{
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        p {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        button {
+          padding: 12px 24px;
+          background-color: #d9534f;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          font-size: 18px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        button:hover {
+          background-color: #c9302c;
+        }
+    </style>
+</head>
+
+<body>
+    <div align="center">
+        <h1>Consulta Endereço ViaCEP</h1>
+        <label>Digite seu CEP: </label>
+        <input type="number" id="cep"/>
+        <button onclick="consultaEndereco()"> Consultar </button>
+        <div id="resultado">
+            <p>Seu Resultado Aqui!</p>
+        </div>
+    </div><br>
+    <script>
+        function consultaEndereco(){
+            let cep = document.querySelector('#cep').value;
+            
+            if(cep.length !== 8){
+                alert('CEP Invalido!');
+                return;
+            }
+
+            let url = `https://viacep.com.br/ws/${cep}/json/`;
+            
+            fetch(url).then(function(response){
+                response.json().then(mostrarEndereco)            
+            });
+        }
+
+        function mostrarEndereco(dados){
+            let resultado = document.querySelector('#resultado');
+            if (dados.erro){
+                resultado.innerHTML = "Não foi possível localizar o endereço!";
+            } else {
+            resultado.innerHTML = `<p> Endereço: ${dados.logradouro} </p>
+                                   <p> Bairro: ${dados.bairro} </p>
+                                   <p> Cidade: ${dados.localidade} - ${dados.uf} </p>`
+            }//<p> Complemento: ${dados.complemento} </p>//
+        }
+    </script>
+</body>
+</html>
