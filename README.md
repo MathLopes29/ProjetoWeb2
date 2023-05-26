@@ -12,7 +12,6 @@
     <ul> As rotas da aplicação são: 
         <li> http://localhost:8080 - Index do Projeto </li>
         <li> http://localhost:8080/404 - Página de Erro </li>
-        <li> http://localhost:8080/integrantes - Desenvolvedores do Projeto </li>
         <li> http://localhost:8080/cep - Consultar CEP  </li>
         <li> http://localhost:8080/notas - Cálculo de Média (((Nota da P1 + Nota da P2)* 0.6) / 2) + (Nota do Projeto * 0.4) </li>
     </ul>
