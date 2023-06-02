@@ -8,6 +8,7 @@
     <p> Aplicação Web usando Java Spring Boot </p>
     <p> Para usar esse programa é necessário ter o IntelliJ </p>
     <p> Para executar a aplicação: ProjetoWeb2-master\src\main\java\rota\projeto </p>
+    <p> Padrão GoF está no Arquivo: API-Media.html (Abstract Method) </p>
     <hr>
     <ul> As rotas da aplicação são: 
         <li> http://localhost:4000 - Index do Projeto </li>
